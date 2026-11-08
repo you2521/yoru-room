@@ -316,16 +316,13 @@
       border-color: var(--border-strong);
     }
 
-    /* ビジュアルプレビュー領域 (画像または線画グラフィック) */
+    /* ビジュアルプレビュー領域 (画像が指定された時のみ表示) */
     .card-visual {
       width: 100%;
-      height: 148px;
-      background: linear-gradient(135deg, #1b1e29 0%, #12141c 100%);
+      max-height: 200px;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-surface-elevated);
       border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
       overflow: hidden;
     }
 
@@ -333,28 +330,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .visual-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-2);
-      color: var(--accent-gold);
-      opacity: 0.9;
-    }
-
-    .visual-placeholder svg {
-      width: 42px;
-      height: 42px;
-      stroke-width: 1.5;
-    }
-
-    .visual-caption {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
+      display: block;
     }
 
     .card-body {
@@ -607,31 +583,6 @@
 
   <script src="site_data.js"></script>
   <script>
-    function getVisualSvg(type) {
-      if (type === 'ai-video') {
-        return `<div class="visual-placeholder" style="color:var(--cat-ai-text);">
-          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          <span class="visual-caption">META MUSE AI CREATIVE WORKFLOW</span>
-        </div>`;
-      }
-      if (type === 'roadmap') {
-        return `<div class="visual-placeholder" style="color:var(--cat-brain-text);">
-          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          <span class="visual-caption">BRAIN SIDE-HUSTLE ROADMAP</span>
-        </div>`;
-      }
-      if (type === 'mouse') {
-        return `<div class="visual-placeholder" style="color:var(--cat-gadget-text);">
-          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><line x1="12" y1="7" x2="12" y2="11"/></svg>
-          <span class="visual-caption">SILENT ERGONOMIC DESK GEAR</span>
-        </div>`;
-      }
-      return `<div class="visual-placeholder" style="color:var(--cat-gadget-text);">
-        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-        <span class="visual-caption">NIGHT DESK LIGHTING SETUP</span>
-      </div>`;
-    }
-
     function renderItems(filter = 'all') {
       const container = document.getElementById('item-container');
       const updatedEl = document.getElementById('last-updated');
@@ -646,9 +597,10 @@
         const article = document.createElement('article');
         article.className = 'item-card';
 
-        const visualHtml = item.image
-          ? `<img src="${item.image}" alt="${item.title}" loading="lazy">`
-          : getVisualSvg(item.visualType);
+        // 画像が設定されている場合のみ画像枠を表示、ない時は枠ごと非表示
+        const visualHtml = item.image && item.image.trim() !== ''
+          ? `<div class="card-visual"><img src="${item.image}" alt="${item.title}" loading="lazy"></div>`
+          : '';
 
         let guideHtml = '';
         let ctaHtml = '';
@@ -681,7 +633,7 @@
         }
 
         article.innerHTML = `
-          <div class="card-visual">${visualHtml}</div>
+          ${visualHtml}
           <div class="card-body">
             <div class="card-meta">
               <span class="category-tag ${item.category}">${item.badgeText}</span>
