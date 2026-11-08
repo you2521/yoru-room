@@ -505,6 +505,8 @@
       color: var(--text-muted);
     }
   </style>
+  <!-- Vercel Web Analytics (無料公式計測タグ) -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -668,10 +670,54 @@
       renderItems(category);
     }
 
-    function trackClick(itemId) {
-      const current = parseInt(localStorage.getItem('yoru_total_clicks') || '0', 10);
-      localStorage.setItem('yoru_total_clicks', String(current + 1));
+    // アナリティクス＆クリック集計エンジン
+    function getReferrerSource() {
+      const ref = document.referrer.toLowerCase();
+      if (ref.includes('threads.net')) return 'Threads';
+      if (ref.includes('t.co') || ref.includes('twitter.com') || ref.includes('x.com')) return 'X';
+      if (ref.includes('instagram.com')) return 'Instagram';
+      if (ref.includes('google')) return 'Google';
+      return 'Direct';
     }
+
+    function recordAnalytics(type, itemId = '') {
+      const source = getReferrerSource();
+      const now = new Date().toISOString();
+
+      // 1. ローカルストレージに集計（即時確認用）
+      try {
+        const stats = JSON.parse(localStorage.getItem('yoru_site_stats') || '{"pv":0,"clicks":{},"sources":{}}');
+        if (type === 'pv') {
+          stats.pv = (stats.pv || 0) + 1;
+        } else if (type === 'click' && itemId) {
+          stats.clicks[itemId] = (stats.clicks[itemId] || 0) + 1;
+        }
+        stats.sources[source] = (stats.sources[source] || 0) + 1;
+        localStorage.setItem('yoru_site_stats', JSON.stringify(stats));
+
+        // 過去互換
+        const current = parseInt(localStorage.getItem('yoru_total_clicks') || '0', 10);
+        if (type === 'click') localStorage.setItem('yoru_total_clicks', String(current + 1));
+      } catch (e) {}
+
+      // 2. クラウド集計API（GAS等）が設定されている場合はバックグラウンド送信
+      const apiUrl = localStorage.getItem('yoru_gas_api_url') || window.YORU_ANALYTICS_ENDPOINT;
+      if (apiUrl) {
+        const endpoint = `${apiUrl}?action=track&type=${encodeURIComponent(type)}&item=${encodeURIComponent(itemId)}&ref=${encodeURIComponent(source)}&t=${Date.now()}`;
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon(endpoint);
+        } else {
+          fetch(endpoint, { mode: 'no-cors' }).catch(() => {});
+        }
+      }
+    }
+
+    function trackClick(itemId) {
+      recordAnalytics('click', itemId);
+    }
+
+    // サイト訪問時に自動でPV記録
+    recordAnalytics('pv');
 
     renderItems();
   </script>
