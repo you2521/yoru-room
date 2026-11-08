@@ -1,7 +1,18 @@
 // このファイルは auto_generator.py によって自動更新されます
 const siteData = {
-  "lastUpdated": "2026/11/08",
+  "lastUpdated": "2026/11/09",
   "items": [
+    {
+      "id": "gadget-screenbar",
+      "category": "rakuten",
+      "badgeText": "愛用デスクライト",
+      "priceNote": "2,280円 / クーポンあり",
+      "image": "",
+      "title": "モニターの上に置くだけ！手元だけふんわり照らすLEDスクリーンバー",
+      "comment": "部屋の電気を消してこのライトだけ点けると、一気に秘密基地感が出て作業に集中できます🌙 画面に光が反射しないから夜更かししても目が疲れにくいのが最高！",
+      "btnText": "楽天市場で詳細を見る",
+      "url": "https://a.r10.to/hgn2p0"
+    },
     {
       "id": "brain-threads-ai",
       "category": "brain",
@@ -39,17 +50,6 @@ const siteData = {
       "comment": "夜中にAIで動画生成や作業をしていてもカチカチ音がしないのが最高。見た目もコロンとしてて可愛いし、デスクのテンションが上がります。",
       "btnText": "楽天市場で詳細を見る",
       "url": "#rakuten-affiliate-link-1"
-    },
-    {
-      "id": "gadget-02",
-      "category": "rakuten",
-      "badgeText": "目の疲れ対策",
-      "priceNote": "コスパ優秀アイテム",
-      "image": "",
-      "title": "モニターの上に置くだけ！手元だけふんわり照らすLEDスクリーンバー",
-      "comment": "部屋の電気を消してこのライトだけ点けると、一気に秘密基地感が出て作業に集中できます🌙 画面に光が反射しないから目も疲れにくいです。",
-      "btnText": "楽天市場で詳細を見る",
-      "url": "#rakuten-affiliate-link-2"
     }
   ]
 };
