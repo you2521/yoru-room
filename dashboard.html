@@ -624,16 +624,25 @@ URL：https://item.rakuten.co.jp/...
 
         const mainText = isGuide
           ? `最近Metaの『Muse AI』で動画やイラスト作るのにハマってるんだけど見て…🌙\n文字でイメージ入れるだけで3分でエモい作品ができるから夜更かし止まらない☕\n\n私がやってる3ステップはプロフのお部屋にまとめてます👇\n#AI副業 #MuseAI`
-          : `え、これもっと早く知りたかったんだけど…！🌙\n${item.comment}\n\n気になってた人は下の返信欄（またはプロフのお部屋）から無料パートだけでも読んでみて👇`;
+          : `部屋の電気を全部消して、このライトだけ点けて作業する夜が好きすぎる☕\n${item.comment}\n\n愛用アイテムはプロフのお部屋にまとめてます👇\n#デスク周り #在宅ワーク #PR`;
 
-        const replyText = `▼ 詳細・無料パートはこちら（#PR）\n『${item.title}』\n${targetUrl}\n\n他にも私が使ってるAIツールや愛用デスク周りは「よるのお部屋🌙」にまとめてます👇\nhttps://you2521.github.io/yoru-room/`;
+        const replyText = `▼ 詳細・愛用アイテムはこちら（#PR）\n『${item.title}』\n${targetUrl}\n\n他にも私が使ってるAIツールや愛用デスク周りは「よるのお部屋🌙」にまとめてます👇\nhttps://you2521.github.io/yoru-room/`;
+
+        // Xの投稿画面をダイレクトに開くURL (Web Intent)
+        const xIntentUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(mainText);
 
         const div = document.createElement('div');
         div.className = 'copy-card';
         div.innerHTML = `
           <div class="copy-header">
             <span>① 親ポスト #${i + 1} (${item.badgeText})</span>
-            <button class="copy-btn" onclick="copyText('${postIdMain}', this)">親ポストをコピー</button>
+            <div style="display:flex;gap:6px;">
+              <a href="${xIntentUrl}" target="_blank" class="copy-btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;background:#1d9bf0;color:#fff;">
+                <svg class="icon-svg" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+                𝕏でポスト画面を開く
+              </a>
+              <button class="copy-btn" onclick="copyText('${postIdMain}', this)">本文コピー</button>
+            </div>
           </div>
           <div class="copy-text" id="${postIdMain}" style="margin-bottom:10px;">${mainText}</div>
           <div class="copy-header">
