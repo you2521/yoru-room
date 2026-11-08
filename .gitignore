@@ -1,4 +1,5 @@
 # 裏側のスクリプトファイルのみ除外（dashboard.htmlはスマホ閲覧用にPINロック付きで公開）
+SPECIFICATION.md
 posts_stock.md
 auto_generator.py
 add_item.py
