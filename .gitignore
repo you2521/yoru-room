@@ -1,5 +1,4 @@
-# オーナー専用ファイルはネット公開（GitHub）から除外してローカルのみで管理
-dashboard.html
+# 裏側のスクリプトファイルのみ除外（dashboard.htmlはスマホ閲覧用にPINロック付きで公開）
 posts_stock.md
 auto_generator.py
 __pycache__/

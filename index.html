@@ -10,47 +10,39 @@
   <style>
     /* ==========================================================================
        よるのお部屋 × デジタル庁デザインシステム（DADS）準拠トークン
-       - 8px グリッドシステム (8 / 16 / 24 / 32 / 48px)
-       - WCAG AA/AAA コントラスト比 (4.5:1〜7:1以上) を満たすダークパレット
-       - 最小タップ領域 44px×44px 以上・キーボードフォーカス可視化
+       - 線アイコン（SVG Stroke Icons）による洗練されたUI
+       - ビジュアルサムネイル枠対応（画像URLまたは内蔵SVGグラフィック）
        ========================================================================== */
     :root {
-      /* Surface & Background */
       --bg-canvas: #0d0e12;
       --bg-surface: #171921;
       --bg-surface-elevated: #20232e;
-      --bg-comment: #252936;
+      --bg-comment: #232734;
 
-      /* Borders & Dividers */
       --border-subtle: #2e3344;
       --border-strong: #495068;
       --border-focus: #ffd470;
 
-      /* Text Colors (WCAG AAA〜AA High Contrast on Dark) */
-      --text-primary: #f8f9fc;     /* コントラスト比 17:1 */
-      --text-secondary: #cfd4e3;   /* コントラスト比 11:1 */
-      --text-muted: #9da5bd;       /* コントラスト比 6.2:1 */
-      --text-on-accent: #101218;   /* ゴールド背景上の濃色テキスト (12:1) */
+      --text-primary: #f8f9fc;
+      --text-secondary: #cfd4e3;
+      --text-muted: #9da5bd;
+      --text-on-accent: #101218;
 
-      /* Brand & Semantic Accents */
       --accent-gold: #f5cf6b;
       --accent-gold-hover: #fae094;
-      --accent-pink: #ff8fa3;
 
-      /* Category Semantic Tokens (高視認性ピル) */
-      --cat-ai-bg: rgba(114, 239, 248, 0.16);
+      --cat-ai-bg: rgba(114, 239, 248, 0.14);
       --cat-ai-text: #8ef5fc;
-      --cat-ai-border: rgba(114, 239, 248, 0.45);
+      --cat-ai-border: rgba(114, 239, 248, 0.4);
 
-      --cat-brain-bg: rgba(255, 143, 179, 0.16);
+      --cat-brain-bg: rgba(255, 143, 179, 0.14);
       --cat-brain-text: #ffadc7;
-      --cat-brain-border: rgba(255, 143, 179, 0.45);
+      --cat-brain-border: rgba(255, 143, 179, 0.4);
 
-      --cat-gadget-bg: rgba(255, 183, 107, 0.16);
+      --cat-gadget-bg: rgba(255, 183, 107, 0.14);
       --cat-gadget-text: #ffca8a;
-      --cat-gadget-border: rgba(255, 183, 107, 0.45);
+      --cat-gadget-border: rgba(255, 183, 107, 0.4);
 
-      /* Spacing Scale (8px Grid) */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
@@ -59,7 +51,6 @@
       --space-6: 32px;
       --space-7: 48px;
 
-      /* Radius */
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
@@ -73,12 +64,11 @@
     }
 
     body {
-      /* 本文は可読性の高い Noto Sans JP、見出しでキャラクター性のある丸ゴシックを併用 */
       font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg-canvas);
       background-image:
-        radial-gradient(circle at 15% 10%, rgba(245, 207, 107, 0.07) 0%, transparent 30%),
-        radial-gradient(circle at 85% 50%, rgba(255, 143, 163, 0.05) 0%, transparent 35%);
+        radial-gradient(circle at 15% 10%, rgba(245, 207, 107, 0.06) 0%, transparent 30%),
+        radial-gradient(circle at 85% 50%, rgba(255, 143, 163, 0.04) 0%, transparent 35%);
       color: var(--text-primary);
       font-size: 16px;
       line-height: 1.75;
@@ -87,10 +77,21 @@
       padding-bottom: var(--space-7);
     }
 
-    /* アクセシビリティ: キーボード操作時のフォーカスリング */
     :focus-visible {
       outline: 3px solid var(--border-focus);
       outline-offset: 2px;
+    }
+
+    /* 線アイコン共通スタイル */
+    .icon-svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex-shrink: 0;
     }
 
     .container {
@@ -99,9 +100,7 @@
       padding: var(--space-5) var(--space-4);
     }
 
-    /* ==========================================================================
-       1. プロフィールヘッダー (情報階層の明確化)
-       ========================================================================== */
+    /* 1. プロフィールヘッダー */
     .profile-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
@@ -147,13 +146,13 @@
       right: 0;
       background: var(--bg-surface-elevated);
       border: 1.5px solid var(--accent-gold);
+      color: var(--accent-gold);
       border-radius: 50%;
       width: 28px;
       height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
     }
 
     .profile-heading {
@@ -197,7 +196,7 @@
       align-items: center;
       justify-content: center;
       gap: var(--space-2);
-      min-height: 44px; /* DADS タッチターゲット基準 */
+      min-height: 44px;
       padding: var(--space-2) var(--space-4);
       border-radius: var(--radius-md);
       background: var(--bg-surface-elevated);
@@ -214,9 +213,7 @@
       border-color: var(--accent-gold);
     }
 
-    /* ==========================================================================
-       2. カテゴリフィルタタブ (操作性と現在位置の明示)
-       ========================================================================== */
+    /* 2. カテゴリフィルタタブ */
     .filter-nav {
       margin-bottom: var(--space-5);
     }
@@ -242,14 +239,14 @@
     }
 
     .tab-btn {
-      min-height: 44px; /* タップ領域44px以上 */
+      min-height: 44px;
       padding: var(--space-2) var(--space-3);
       border-radius: var(--radius-md);
       background: var(--bg-surface);
       border: 1.5px solid var(--border-subtle);
       color: var(--text-secondary);
       font-family: inherit;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -271,9 +268,7 @@
       box-shadow: 0 2px 10px rgba(245, 207, 107, 0.25);
     }
 
-    /* ==========================================================================
-       3. セクション見出し＆メタ情報
-       ========================================================================== */
+    /* 3. セクション見出し */
     .section-header {
       display: flex;
       align-items: center;
@@ -302,9 +297,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* ==========================================================================
-       4. アイテムカード (視線誘導: メタ情報 → 見出し → レビュー吹き出し → CTA)
-       ========================================================================== */
+    /* 4. アイテムカード＆ビジュアルサムネイル */
     .card-list {
       display: flex;
       flex-direction: column;
@@ -315,12 +308,57 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      transition: border-color 0.2s ease, transform 0.2s ease;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
     }
 
     .item-card:hover {
       border-color: var(--border-strong);
+    }
+
+    /* ビジュアルプレビュー領域 (画像または線画グラフィック) */
+    .card-visual {
+      width: 100%;
+      height: 148px;
+      background: linear-gradient(135deg, #1b1e29 0%, #12141c 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visual-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--accent-gold);
+      opacity: 0.9;
+    }
+
+    .visual-placeholder svg {
+      width: 42px;
+      height: 42px;
+      stroke-width: 1.5;
+    }
+
+    .visual-caption {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      padding: var(--space-5);
     }
 
     .card-meta {
@@ -335,6 +373,7 @@
     .category-tag {
       display: inline-flex;
       align-items: center;
+      gap: 6px;
       font-size: 0.75rem;
       font-weight: 700;
       padding: 4px 10px;
@@ -374,7 +413,7 @@
       margin-bottom: var(--space-4);
     }
 
-    /* キャラクターの一言レビュー（背景コントラストと境界を明確化） */
+    /* よるのひとことレビュー */
     .review-box {
       display: flex;
       align-items: flex-start;
@@ -383,7 +422,7 @@
       border-left: 3px solid var(--accent-gold);
       padding: var(--space-3) var(--space-4);
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
 
     .mini-avatar {
@@ -410,7 +449,43 @@
       margin-bottom: 2px;
     }
 
-    /* プライマリCTAボタン (DADS基準: 最小高さ48px・高コントラスト・外部リンク明示) */
+    /* 使い方ステップボックス（Muse AI等の解説用） */
+    .guide-steps {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      display: none;
+    }
+
+    .guide-steps.open {
+      display: block;
+    }
+
+    .guide-steps-title {
+      font-weight: 700;
+      color: var(--cat-ai-text);
+      margin-bottom: var(--space-2);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .guide-step-item {
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    .guide-step-item:last-child {
+      border-bottom: none;
+    }
+
+    /* CTAボタン */
     .cta-btn {
       display: flex;
       align-items: center;
@@ -422,21 +497,29 @@
       border-radius: var(--radius-md);
       background: var(--accent-gold);
       color: var(--text-on-accent);
+      font-family: inherit;
       font-weight: 700;
       font-size: 0.9375rem;
       text-decoration: none;
+      border: none;
+      cursor: pointer;
       transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .cta-btn.secondary-action {
+      background: var(--bg-surface-elevated);
+      color: var(--cat-ai-text);
+      border: 1.5px solid var(--cat-ai-border);
     }
 
     .cta-btn:hover {
       background: var(--accent-gold-hover);
     }
 
-    .cta-btn:active {
-      transform: translateY(1px);
+    .cta-btn.secondary-action:hover {
+      background: rgba(114, 239, 248, 0.22);
     }
 
-    /* フッター・広告表記（ステマ規制対応の明瞭な表示） */
     .footer-notice {
       margin-top: var(--space-7);
       padding-top: var(--space-4);
@@ -455,7 +538,9 @@
       <div class="profile-top">
         <div class="avatar-wrapper">
           <img src="assets/avatar.webp" alt="よるのアイコン" class="avatar">
-          <div class="star-badge" aria-hidden="true">⭐</div>
+          <div class="star-badge" aria-hidden="true">
+            <svg class="icon-svg" style="width:14px;height:14px;" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
         </div>
         <div class="profile-heading">
           <span class="profile-role">AI × ゆる副業 ＆ デスク環境ログ</span>
@@ -463,23 +548,41 @@
         </div>
       </div>
       <p class="profile-bio">
-        黒パーカーで夜な夜なAI（音楽・イラスト生成）をいじっているインドア女子です☕<br>
-        「むずかしい専門知識なしで、楽しくお小遣い稼ぎ」をテーマに、実際に使ってよかった神AIツール・Brain教材・愛用デスクガジェットを分かりやすくまとめています✨
+        黒パーカーで夜な夜なAI（Meta Muse AIなどで動画・イラスト生成）をいじっているインドア女子です。<br>
+        「むずかしい専門知識なしで、楽しくお小遣い稼ぎ」をテーマに、私のAI活用レシピや、実際に学んでよかったBrain教材・愛用デスクガジェットをまとめています。
       </p>
       <nav class="sns-links" aria-label="SNSリンク">
-        <a href="#x-link" class="sns-btn">𝕏 最新ポストを見る</a>
-        <a href="#threads-link" class="sns-btn">Threads を見る</a>
+        <a href="#x-link" class="sns-btn">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+          <span>X 最新ポスト</span>
+        </a>
+        <a href="#threads-link" class="sns-btn">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg>
+          <span>Threads を見る</span>
+        </a>
       </nav>
     </header>
 
-    <!-- 2. カテゴリ絞り込みナビゲーション -->
+    <!-- 2. カテゴリ絞り込みナビゲーション（線アイコン仕様） -->
     <section class="filter-nav" aria-label="カテゴリ絞り込み">
       <span class="filter-label">カテゴリで絞り込む（タップで切替）</span>
       <div class="tabs" role="tablist">
-        <button class="tab-btn" role="tab" aria-selected="true" onclick="filterItems('all', this)">すべて表示</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('ai', this)">🎵 AIツール</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('brain', this)">📚 Brain教材</button>
-        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('rakuten', this)">⌨️ ガジェット</button>
+        <button class="tab-btn" role="tab" aria-selected="true" onclick="filterItems('all', this)">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          <span>すべて</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('ai', this)">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"/></svg>
+          <span>AI活用術</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('brain', this)">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Brain教材</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" onclick="filterItems('rakuten', this)">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></svg>
+          <span>ガジェット</span>
+        </button>
       </div>
     </section>
 
@@ -487,13 +590,13 @@
     <section aria-labelledby="pickup-heading">
       <div class="section-header">
         <h2 class="section-title" id="pickup-heading">
-          <span aria-hidden="true">⭐</span> おすすめピックアップ
+          <svg class="icon-svg" style="color:var(--accent-gold);" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>おすすめピックアップ</span>
         </h2>
         <span class="meta-badge" id="last-updated">更新日: 2026/11/08</span>
       </div>
 
       <div class="card-list" id="item-container" role="region" aria-live="polite">
-        <!-- site_data.js から自動描画 -->
       </div>
     </section>
 
@@ -504,6 +607,31 @@
 
   <script src="site_data.js"></script>
   <script>
+    function getVisualSvg(type) {
+      if (type === 'ai-video') {
+        return `<div class="visual-placeholder" style="color:var(--cat-ai-text);">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <span class="visual-caption">META MUSE AI CREATIVE WORKFLOW</span>
+        </div>`;
+      }
+      if (type === 'roadmap') {
+        return `<div class="visual-placeholder" style="color:var(--cat-brain-text);">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span class="visual-caption">BRAIN SIDE-HUSTLE ROADMAP</span>
+        </div>`;
+      }
+      if (type === 'mouse') {
+        return `<div class="visual-placeholder" style="color:var(--cat-gadget-text);">
+          <svg class="icon-svg" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="6"/><line x1="12" y1="7" x2="12" y2="11"/></svg>
+          <span class="visual-caption">SILENT ERGONOMIC DESK GEAR</span>
+        </div>`;
+      }
+      return `<div class="visual-placeholder" style="color:var(--cat-gadget-text);">
+        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+        <span class="visual-caption">NIGHT DESK LIGHTING SETUP</span>
+      </div>`;
+    }
+
     function renderItems(filter = 'all') {
       const container = document.getElementById('item-container');
       const updatedEl = document.getElementById('last-updated');
@@ -514,28 +642,72 @@
 
       const filtered = siteData.items.filter(item => filter === 'all' || item.category === filter);
 
-      filtered.forEach(item => {
+      filtered.forEach((item, idx) => {
         const article = document.createElement('article');
         article.className = 'item-card';
-        article.innerHTML = `
-          <div class="card-meta">
-            <span class="category-tag ${item.category}">${item.badgeText}</span>
-            <span class="price-note">${item.priceNote}</span>
-          </div>
-          <h3 class="item-title">${item.title}</h3>
-          <div class="review-box">
-            <img src="assets/avatar.webp" alt="" class="mini-avatar" aria-hidden="true">
-            <div class="review-text">
-              <span class="review-label">よるのひとことレビュー🌙</span>
-              ${item.comment}
+
+        const visualHtml = item.image
+          ? `<img src="${item.image}" alt="${item.title}" loading="lazy">`
+          : getVisualSvg(item.visualType);
+
+        let guideHtml = '';
+        let ctaHtml = '';
+
+        if (item.guideSteps && item.guideSteps.length > 0) {
+          const stepId = `guide-step-box-${idx}`;
+          const stepsList = item.guideSteps.map(s => `<div class="guide-step-item">${s}</div>`).join('');
+          guideHtml = `
+            <div class="guide-steps" id="${stepId}">
+              <div class="guide-steps-title">
+                <svg class="icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>よるが実践している3ステップ</span>
+              </div>
+              ${stepsList}
             </div>
+          `;
+          ctaHtml = `
+            <button type="button" class="cta-btn secondary-action" onclick="toggleGuide('${stepId}', this)">
+              <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              <span>${item.btnText}</span>
+            </button>
+          `;
+        } else {
+          ctaHtml = `
+            <a href="${item.url}" class="cta-btn" target="_blank" rel="noopener noreferrer" onclick="trackClick('${item.id || item.title}')">
+              <span>${item.btnText}</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          `;
+        }
+
+        article.innerHTML = `
+          <div class="card-visual">${visualHtml}</div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="category-tag ${item.category}">${item.badgeText}</span>
+              <span class="price-note">${item.priceNote}</span>
+            </div>
+            <h3 class="item-title">${item.title}</h3>
+            <div class="review-box">
+              <img src="assets/avatar.webp" alt="" class="mini-avatar" aria-hidden="true">
+              <div class="review-text">
+                <span class="review-label">よるのひとことレビュー 🌙</span>
+                ${item.comment}
+              </div>
+            </div>
+            ${guideHtml}
+            ${ctaHtml}
           </div>
-          <a href="${item.url}" class="cta-btn" target="_blank" rel="noopener noreferrer" onclick="trackClick('${item.id || item.title}')">
-            <span>${item.btnText}</span>
-          </a>
         `;
         container.appendChild(article);
       });
+    }
+
+    function toggleGuide(id, btn) {
+      const box = document.getElementById(id);
+      const isOpen = box.classList.toggle('open');
+      btn.querySelector('span').textContent = isOpen ? '活用ステップを閉じる' : 'よるのMuse AI活用ステップを見る';
+      trackClick(id);
     }
 
     function filterItems(category, btnEl) {
