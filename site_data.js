@@ -3,11 +3,21 @@ const siteData = {
   "lastUpdated": "2026/11/08",
   "items": [
     {
+      "id": "brain-threads-ai",
+      "category": "brain",
+      "badgeText": "Brain 特選レビュー",
+      "priceNote": "100部突破の人気教材",
+      "image": "",
+      "title": "90投稿を8分で量産！Threads運用まで自動化するAIスキル【Claude Code / Codex】",
+      "comment": "毎日SNSのネタ出しで夜更かししてた私が『こんなやり方あったんだ…！』って衝撃を受けた自動化ノウハウ。AIに自分の型を覚えさせて一気に90投稿作る仕組みが丸わかりになります🌙",
+      "btnText": "無料パートを読んでみる（Brain）",
+      "url": "https://brmk.io/WmouxC"
+    },
+    {
       "id": "muse-ai-guide",
       "category": "ai",
       "badgeText": "Muse AI 活用レシピ",
       "priceNote": "よるの制作ノート",
-      "visualType": "ai-video",
       "image": "",
       "title": "【Meta Muse AI】動画もイラストもこれ1つ！夜更かしAIクリエイティブ術",
       "comment": "私が普段ショート動画やイラストを作る時に使い倒しているMetaのAI『Muse』。具体的なプロンプト（指示文）のコツや、3分でエモい動画を作る手順をまとめました🌙",
@@ -20,23 +30,10 @@ const siteData = {
       "url": "#guide-modal"
     },
     {
-      "id": "brain-01",
-      "category": "brain",
-      "badgeText": "Brain 特選レビュー",
-      "priceNote": "高評価 4.9 / 実践済",
-      "visualType": "roadmap",
-      "image": "",
-      "title": "AI×SNSで月3〜5万を目指す！初心者向けほったらかし副業ロードマップ",
-      "comment": "Museなどの無料AIで作ったコンテンツを『どうやって収益に繋げるか』が全部書いてある教材。私が最初に読んで仕組み化の基礎を学んだバイブルです。",
-      "btnText": "無料パートを読んでみる（Brain）",
-      "url": "#brain-affiliate-link"
-    },
-    {
       "id": "gadget-01",
       "category": "rakuten",
       "badgeText": "愛用デスクガジェット",
       "priceNote": "静音設計 / 送料無料",
-      "visualType": "mouse",
       "image": "",
       "title": "手首がぜんぜん疲れない！カフェ風カラーの静音ワイヤレスマウス",
       "comment": "夜中にAIで動画生成や作業をしていてもカチカチ音がしないのが最高。見た目もコロンとしてて可愛いし、デスクのテンションが上がります。",
@@ -48,7 +45,6 @@ const siteData = {
       "category": "rakuten",
       "badgeText": "目の疲れ対策",
       "priceNote": "コスパ優秀アイテム",
-      "visualType": "light",
       "image": "",
       "title": "モニターの上に置くだけ！手元だけふんわり照らすLEDスクリーンバー",
       "comment": "部屋の電気を消してこのライトだけ点けると、一気に秘密基地感が出て作業に集中できます🌙 画面に光が反射しないから目も疲れにくいです。",
