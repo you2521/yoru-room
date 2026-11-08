@@ -1,0 +1,6 @@
+# オーナー専用ファイルはネット公開（GitHub）から除外してローカルのみで管理
+dashboard.html
+posts_stock.md
+auto_generator.py
+__pycache__/
+.env
