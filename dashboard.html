@@ -378,7 +378,7 @@
         </div>
       </div>
       <div class="quick-links">
-        <a href="https://you2521.github.io/yoru-room/" target="_blank" class="btn primary">
+        <a href="https://yoru-room.vercel.app/" target="_blank" class="btn primary">
           <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <span>公開サイトを開く</span>
         </a>
@@ -396,8 +396,8 @@
           <svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <span>サイト公開ステータス</span>
         </div>
-        <div class="kpi-value" style="font-size:1.35rem; color:var(--status-ok-text);">本番公開中</div>
-        <div class="kpi-note"><a href="https://you2521.github.io/yoru-room/" target="_blank" style="color:var(--accent-gold);">https://you2521.github.io/yoru-room/</a></div>
+        <div class="kpi-value" style="font-size:1.35rem; color:var(--status-ok-text);">本番公開中 (Vercel)</div>
+        <div class="kpi-note"><a href="https://yoru-room.vercel.app/" target="_blank" style="color:var(--accent-gold);">https://yoru-room.vercel.app/</a></div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">
@@ -493,7 +493,7 @@ URL：https://item.rakuten.co.jp/...
               <span>Webサイト欄URL（X / Threads プロフ用）</span>
               <button class="copy-btn" onclick="copyText('prof-url', this)">コピー</button>
             </div>
-            <div class="copy-text" id="prof-url">https://you2521.github.io/yoru-room/</div>
+            <div class="copy-text" id="prof-url">https://yoru-room.vercel.app/</div>
           </div>
           <div class="copy-card">
             <div class="copy-header">
@@ -620,13 +620,13 @@ URL：https://item.rakuten.co.jp/...
         const postIdReply = 'sns-post-reply-' + i;
         const isGuide = Boolean(item.guideSteps);
         const isDummy = !isGuide && item.url.startsWith('#');
-        const targetUrl = (!isGuide && !isDummy) ? item.url : 'https://you2521.github.io/yoru-room/';
+        const targetUrl = (!isGuide && !isDummy) ? item.url : 'https://yoru-room.vercel.app/';
 
         const mainText = isGuide
           ? `最近Metaの『Muse AI』で動画やイラスト作るのにハマってるんだけど見て…🌙\n文字でイメージ入れるだけで3分でエモい作品ができるから夜更かし止まらない☕\n\n私がやってる3ステップはプロフのお部屋にまとめてます👇\n#AI副業 #MuseAI`
           : `部屋の電気を全部消して、このライトだけ点けて作業する夜が好きすぎる☕\n${item.comment}\n\n愛用アイテムはプロフのお部屋にまとめてます👇\n#デスク周り #在宅ワーク #PR`;
 
-        const replyText = `▼ 詳細・愛用アイテムはこちら（#PR）\n『${item.title}』\n${targetUrl}\n\n他にも私が使ってるAIツールや愛用デスク周りは「よるのお部屋🌙」にまとめてます👇\nhttps://you2521.github.io/yoru-room/`;
+        const replyText = `▼ 詳細・愛用アイテムはこちら（#PR）\n『${item.title}』\n${targetUrl}\n\n他にも私が使ってるAIツールや愛用デスク周りは「よるのお部屋🌙」にまとめてます👇\nhttps://yoru-room.vercel.app/`;
 
         // Xの投稿画面をダイレクトに開くURL (Web Intent)
         const xIntentUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(mainText);
