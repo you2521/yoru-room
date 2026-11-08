@@ -3,6 +3,17 @@ const siteData = {
   "lastUpdated": "2026/11/09",
   "items": [
     {
+      "id": "gadget-logi-mouse",
+      "category": "rakuten",
+      "badgeText": "愛用静音マウス",
+      "priceNote": "1,350円 / 送料無料",
+      "image": "",
+      "title": "クリック音90%カット！夜中も安心なロジクール静音ワイヤレスマウス M220",
+      "comment": "夜更かしして作業しててもカチカチ音が全く響かないのが本当にありがたい…！コロンとした手のひらサイズで可愛くて、1,000円ちょっとで買えるコスパの鬼です🖱️✨",
+      "btnText": "楽天市場で詳細を見る",
+      "url": "https://a.r10.to/hPGkJl"
+    },
+    {
       "id": "gadget-screenbar",
       "category": "rakuten",
       "badgeText": "愛用デスクライト",
@@ -39,17 +50,6 @@ const siteData = {
       ],
       "btnText": "よるのMuse AI活用ステップを見る",
       "url": "#guide-modal"
-    },
-    {
-      "id": "gadget-01",
-      "category": "rakuten",
-      "badgeText": "愛用デスクガジェット",
-      "priceNote": "静音設計 / 送料無料",
-      "image": "",
-      "title": "手首がぜんぜん疲れない！カフェ風カラーの静音ワイヤレスマウス",
-      "comment": "夜中にAIで動画生成や作業をしていてもカチカチ音がしないのが最高。見た目もコロンとしてて可愛いし、デスクのテンションが上がります。",
-      "btnText": "楽天市場で詳細を見る",
-      "url": "#rakuten-affiliate-link-1"
     }
   ]
 };
