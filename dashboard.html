@@ -428,6 +428,26 @@
     <div class="main-grid">
       <!-- 左カラム -->
       <div>
+        <section class="panel" aria-labelledby="auto-guide-heading">
+          <h2 class="panel-title" id="auto-guide-heading">
+            <svg class="icon-svg" style="color:var(--accent-gold);" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>AIへの自動追加依頼（教えるだけ！）</span>
+          </h2>
+          <div class="copy-card">
+            <div class="copy-header">
+              <span>チャットに貼るだけの指示例</span>
+              <button class="copy-btn" onclick="copyText('prompt-example', this)">指示文コピー</button>
+            </div>
+            <div class="copy-text" id="prompt-example">これ追加して！
+商品名：ロジクール MX Keys Mini（静音薄型キーボード）
+URL：https://item.rakuten.co.jp/...
+画像URL：https://...（無ければ省略OK）</div>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;">
+              💡 チャットでURLや商品名を伝えるだけで、AIがレビュー文・SNS投稿文の生成から本番サイト公開まで一括で自動実行します。画像がない時は枠ごとスッキリ消す仕様です✨
+            </p>
+          </div>
+        </section>
+
         <section class="panel" aria-labelledby="todo-heading">
           <h2 class="panel-title" id="todo-heading">
             <svg class="icon-svg" style="color:var(--accent-gold);" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>

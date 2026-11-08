@@ -1,5 +1,6 @@
 # 裏側のスクリプトファイルのみ除外（dashboard.htmlはスマホ閲覧用にPINロック付きで公開）
 posts_stock.md
 auto_generator.py
+add_item.py
 __pycache__/
 .env
